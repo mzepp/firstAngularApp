@@ -8,11 +8,19 @@ and open the template in the editor.
     Author     : mzepp
 */
 
-.personTable {
+#personTable {
+    width: 50%;
+}
+
+.personInnerTable {
     border: 1px solid black;
 }
 
-.personTable th{
+.personInnerTable th{
     text-align: center;
 
+}
+
+.divider {
+    height: 30px;
 }
