@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="home/home.css">
+<title>Homepage</title>
+</head>
+Home Page
+<div ng-controller="homeCtrl">
+    <table style="width: 50%" class="container">
+        <thead class="personTable">
+            <tr>
+                <th>Name</th>
+                <th></th>
+                <th>Score</th>
+                <th>Remove Person</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr class="personTable" ng-repeat="person in persons | orderBy: 'fName' | filter: searchName">
+            <td>{{ person.fName }} </td>
+            <td>{{ person.lName }}</td>
+            <td>{{ person.score }}</td>
+            <td><button class="btn-warning" ng-click="removeName($index)">Remove Name</button></td>
+        </tr>
+        </tbody>
+    </table>
+    
+    <div style="height: 20px"></div>
+    
+        <form name="submitForm" ng-submit="addName(newName, newScore)" >
+            <input type="text" name="newName" ng-model="newName" ng-minlength="1" placeholder="Enter your name" ng-required />
+            <input type="number" name="newScore" ng-model="newScore" ng-minlength="1" min="1" placeholder="Enter your score" ng-required />
+            <input type="submit" value="Add Person" ng-disabled="!(!!newName) || !(!!newScore)" class="btn" />
+            <p ng-show="submitName.newScore.$error.number">Please enter a valid number!</p>
+        </form>
+    
+    <div style="height: 30px"></div>
+    
+    <p>
+        Search:<input type="text" ng-model="searchName" placeholder="Search for name" /> 
+        <input type="number" ng-model="searchScore" placeholder="Search for score" />
+    </p>
+    </div>
