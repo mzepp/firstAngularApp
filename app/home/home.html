@@ -5,8 +5,8 @@
 </head>
 Home Page
 <div ng-controller="homeCtrl">
-    <table style="width: 50%" class="container">
-        <thead class="personTable">
+    <table id="personTable" class="container">
+        <thead class="personInnerTable">
             <tr>
                 <th>Name</th>
                 <th></th>
@@ -15,7 +15,7 @@ Home Page
             </tr>
         </thead>
         <tbody>
-        <tr class="personTable" ng-repeat="person in persons | orderBy: 'fName' | filter: searchName">
+        <tr class="personInnerTable" ng-repeat="person in persons | orderBy: 'fName' | filter: searchName">
             <td>{{ person.fName }} </td>
             <td>{{ person.lName }}</td>
             <td>{{ person.score }}</td>
@@ -24,7 +24,7 @@ Home Page
         </tbody>
     </table>
     
-    <div style="height: 20px"></div>
+    <div class="divider"></div>
     
         <form name="submitForm" ng-submit="addName(newName, newScore)" >
             <input type="text" name="newName" ng-model="newName" ng-minlength="1" placeholder="Enter your name" ng-required />
@@ -33,7 +33,7 @@ Home Page
             <p ng-show="submitName.newScore.$error.number">Please enter a valid number!</p>
         </form>
     
-    <div style="height: 30px"></div>
+    <div class="divider"></div>
     
     <p>
         Search:<input type="text" ng-model="searchName" placeholder="Search for name" /> 
